@@ -1,4 +1,4 @@
-const CACHE = 'morning-calisthenics-v2-motion';
+const CACHE = 'morning-calisthenics-v3-icon-refresh';
 const CORE = ['./', './index.html', './manifest.webmanifest', './motion-icon-180.png', './motion-icon-192.png', './motion-icon-512.png'];
 
 self.addEventListener('install', event => {
