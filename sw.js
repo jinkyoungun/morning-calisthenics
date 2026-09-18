@@ -1,21 +1,5 @@
-const CACHE = 'morning-calisthenics-v4-fitness-icon';
-const CORE = ['./', './index.html', './manifest.webmanifest', './motion-icon-180.png?v=fitness-20260918', './motion-icon-192.png', './motion-icon-512.png'];
-
-self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));
-});
-
-self.addEventListener('activate', event => {
-  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('morning-calisthenics-') && key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim()));
-});
-
-self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET') return;
-  const url = new URL(event.request.url);
-  if (url.origin !== self.location.origin || !url.href.startsWith(self.registration.scope)) return;
-  event.respondWith(fetch(event.request).then(response => {
-    const copy = response.clone();
-    if(response.ok) event.waitUntil(caches.open(CACHE).then(cache => cache.put(event.request, copy)));
-    return response;
-  }).catch(() => caches.match(event.request).then(hit => hit || caches.match('./index.html'))));
-});
+const CACHE='fitness-plan-v1-20260918';
+const CORE=['./','./index.html','./manifest.webmanifest','./motion-icon-180.png?v=fitness-20260918','./motion-icon-192.png?v=fitness-20260918','./motion-icon-512.png?v=fitness-20260918'];
+self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()))});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;const u=new URL(e.request.url);if(u.origin!==self.location.origin||!u.href.startsWith(self.registration.scope))return;e.respondWith(fetch(e.request).then(r=>{const c=r.clone();if(r.ok)e.waitUntil(caches.open(CACHE).then(cache=>cache.put(e.request,c)));return r}).catch(()=>caches.match(e.request).then(x=>x||caches.match('./index.html'))))});
