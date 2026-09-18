@@ -1,167 +1,37 @@
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#111827">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="운동 플랜">
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="apple-touch-icon" sizes="180x180" href="./motion-icon-180.png?v=fitness-20260918">
-<link rel="icon" type="image/png" href="./motion-icon-192.png?v=fitness-20260918">
-<title>2027 운동 플랜</title>
-<style>
-:root{--bg:#0b1220;--card:#111827;--soft:#172033;--ink:#f8fafc;--sub:#94a3b8;--line:#243047;--accent:#b7ff35;--accent2:#6ee7b7;--warn:#fbbf24}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#0b1220,#111827 28%,#0d1422);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif}
-.app{max-width:640px;margin:auto;min-height:100vh;padding:calc(18px + env(safe-area-inset-top)) 16px calc(94px + env(safe-area-inset-bottom))}
-.hero{padding:20px;border:1px solid #273244;background:linear-gradient(145deg,#151d2c,#0f1725);border-radius:24px;box-shadow:0 16px 50px #0005}
-.kicker{font-size:.78rem;color:var(--accent);font-weight:900;letter-spacing:.1em}.hero h1{font-size:1.65rem;margin:6px 0}.hero p{margin:0;color:#cbd5e1;font-size:.92rem}
-.goal{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.goal div{background:#0c1421;border:1px solid #253149;border-radius:14px;padding:11px}.goal b{display:block;font-size:1.03rem}.goal span{color:var(--sub);font-size:.75rem}
-.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}.tab{border:1px solid var(--line);background:#121a2a;color:#aeb9c8;border-radius:13px;padding:11px 6px;font-weight:850}.tab.active{background:var(--accent);color:#0b1220;border-color:var(--accent)}
-.panel{display:none}.panel.active{display:block}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:15px;margin:10px 0}.row{display:flex;justify-content:space-between;gap:12px;align-items:center}.label{font-size:.78rem;color:var(--sub)}.title{font-size:1.08rem;font-weight:900}.badge{font-size:.75rem;padding:6px 9px;border-radius:999px;background:#1d293b;color:#dbeafe}.badge.green{background:#173526;color:#b7ff35}
-.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:12px 0}.day{border:1px solid var(--line);background:#111827;color:#cbd5e1;border-radius:12px;padding:10px 2px;font-weight:850}.day.active{background:#243247;color:#fff}.day.done{outline:2px solid var(--accent)}
-.exercise{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center;border-top:1px solid #202a3c;padding:12px 0}.exercise:first-child{border-top:0}.check{width:26px;height:26px;border-radius:50%;border:2px solid #526176;background:transparent;color:#0b1220;font-weight:900}.exercise.done .check{background:var(--accent);border-color:var(--accent)}.exercise.done{opacity:.65}.name{font-weight:850}.detail{font-size:.82rem;color:var(--sub);margin-top:2px}
-.section{font-size:.78rem;color:#a7b2c2;margin:16px 0 5px;font-weight:900;letter-spacing:.06em}.progress{height:8px;background:#1e293b;border-radius:999px;overflow:hidden}.progress i{display:block;height:100%;background:var(--accent);width:0}
-.phase{display:grid;gap:10px}.phase .item{padding:14px;border:1px solid var(--line);border-radius:16px;background:#101827}.item b{display:block}.item p{margin:5px 0 0;color:var(--sub);font-size:.84rem}
-.note{font-size:.82rem;color:#cbd5e1;background:#0e1828;border-left:4px solid var(--warn);padding:12px;border-radius:10px;margin-top:12px}
-.bottom{position:fixed;left:0;right:0;bottom:0;background:#0b1220ee;backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
-.bottomin{max-width:612px;margin:auto;display:flex;gap:8px}.primary,.secondary{border:0;border-radius:14px;padding:13px;font-weight:900}.primary{flex:1;background:var(--accent);color:#0b1220}.secondary{background:#202a3d;color:#fff;min-width:96px}
-.small{font-size:.8rem;color:var(--sub)}.statgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.stat{padding:13px;border-radius:15px;background:#0e1726;border:1px solid var(--line)}
-input{width:100%;background:#0b1220;color:#fff;border:1px solid #334155;border-radius:10px;padding:10px;margin-top:6px}
-@media(max-width:390px){.goal{grid-template-columns:1fr}.week{gap:4px}.day{font-size:.78rem}}
-</style>
-</head>
-<body>
-<main class="app">
-<section class="hero">
-<div class="kicker">2027 BODY PROJECT</div>
-<h1>운동 플랜</h1>
-<p>옷핏이 좋고, 벗었을 때는 선명한 애슬레틱 근육형 체형을 목표로 하는 2027년 12월 프로젝트</p>
-<div class="goal">
-<div><b>주 6일</b><span>월–토 운동</span></div>
-<div><b>일요일</b><span>완전 휴식</span></div>
-<div><b>장기 목표</b><span>2027.12</span></div>
-</div>
-</section>
-
-<nav class="tabs">
-<button class="tab active" data-tab="today">오늘</button>
-<button class="tab" data-tab="week">주간</button>
-<button class="tab" data-tab="progress">진행</button>
-</nav>
-
-<section class="panel active" id="today">
-<div class="card">
-<div class="row"><div><div class="label" id="todayLabel"></div><div class="title" id="todayTitle"></div></div><span class="badge green" id="todayType"></span></div>
-<div class="small" id="todayDesc" style="margin-top:8px"></div>
-<div class="progress" style="margin-top:14px"><i id="todayBar"></i></div>
-<div class="small" id="todayCount" style="margin-top:6px"></div>
-</div>
-<div id="exerciseList"></div>
-<div class="note">편한 강도는 대화가 가능한 수준으로 유지하세요. 어지럼, 가슴 통증, 비정상적인 호흡곤란이 있으면 중단하고 확인이 필요합니다.</div>
-</section>
-
-<section class="panel" id="week">
-<div class="card">
-<div class="row"><div><div class="label">이번 주</div><div class="title">월–토 운동 · 일요일 휴식</div></div></div>
-<div class="week" id="weekDays"></div>
-</div>
-<div id="weekPlan"></div>
-</section>
-
-<section class="panel" id="progress">
-<div class="card">
-<div class="label">현재 단계</div>
-<div class="title">2026.09 → 2027.12</div>
-<div class="phase" style="margin-top:10px">
-<div class="item"><b>1단계 · 적응/감량 기반</b><p>규칙적인 러닝 + 근력 루틴 정착, 체력과 관절 적응을 우선.</p></div>
-<div class="item"><b>2단계 · 근육 증가</b><p>상체·하체의 반복수를 점진적으로 올리고 로잉 강도를 조금씩 증가.</p></div>
-<div class="item"><b>3단계 · 체형 정리</b><p>근육량을 유지하면서 체지방을 낮춰 선명도를 만드는 구간.</p></div>
-</div>
-</div>
-<div class="card">
-<div class="title">내 기록</div>
-<div class="statgrid" style="margin-top:10px">
-<div class="stat"><div class="label">체중 kg</div><input id="weight" inputmode="decimal" placeholder="예: 66.2"></div>
-<div class="stat"><div class="label">허리 cm</div><input id="waist" inputmode="decimal" placeholder="예: 82"></div>
-</div>
-<button class="primary" id="saveStats" style="width:100%;margin-top:10px">기록 저장</button>
-<div class="small" id="savedMsg" style="margin-top:7px"></div>
-</div>
-</section>
-</main>
-
-<div class="bottom"><div class="bottomin"><button class="primary" id="completeToday">오늘 운동 완료</button><button class="secondary" id="resetToday">초기화</button></div></div>
-
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#0a101b"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="운동 플랜"><link rel="manifest" href="./manifest.webmanifest?v=trainer-v3"><link rel="apple-touch-icon" sizes="180x180" href="./motion-icon-180.png?v=trainer-v3"><title>2027 운동 플랜</title><style>
+:root{--bg:#09101a;--c:#111a29;--c2:#0d1624;--line:#253248;--ink:#f8fafc;--sub:#94a3b8;--lime:#b8ff35;--blue:#74b9ff;--amber:#fbbf24}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:linear-gradient(#0b1320,#09101a);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif}.app{max-width:660px;margin:auto;min-height:100vh;padding:calc(16px + env(safe-area-inset-top)) 15px calc(104px + env(safe-area-inset-bottom))}
+.hero,.card{background:linear-gradient(180deg,#131d2d,#0f1725);border:1px solid var(--line);border-radius:20px}.hero{padding:18px}.hero h1{margin:5px 0;font-size:1.55rem}.k{font-size:.75rem;color:var(--lime);font-weight:900;letter-spacing:.1em}.sub,.meta{color:var(--sub);font-size:.82rem}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.s{background:#0b1421;border:1px solid var(--line);border-radius:13px;padding:10px}.s b{display:block}.s span{font-size:.7rem;color:var(--sub)}
+.nav{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:12px 0}.nav button,.set,.timerbtn,.finish,.save{border:0;border-radius:12px;font-weight:850}.nav button{padding:10px 3px;background:#111a29;color:#aeb9c8;border:1px solid var(--line)}.nav button.on{background:var(--lime);color:#09101a}.panel{display:none}.panel.on{display:block}.card{padding:14px;margin:9px 0}.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.title{font-size:1.06rem;font-weight:900}.badge{font-size:.72rem;padding:5px 8px;border-radius:999px;background:#203047}.badge.lime{color:var(--lime);background:#243518}.badge.blue{color:#9bd8ff;background:#17304a}
+.bar{height:8px;background:#202c3e;border-radius:999px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--lime),#75ef62);width:0}.week{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:11px}.wd{padding:9px 2px;text-align:center;background:#0b1421;border:1px solid var(--line);border-radius:11px;font-weight:800}.wd small{display:block;color:var(--sub);font-size:.62rem}.wd.done{outline:2px solid var(--lime);outline-offset:-2px}.wd.rest{opacity:.55}
+.exercise{padding:13px}.sets{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}.set{padding:9px 10px;background:#0a1320;color:#cbd5e1;border:1px solid #40506a;min-width:52px}.set.done{background:var(--lime);color:#09101a;border-color:var(--lime)}.target{margin-top:10px;padding:10px;background:#0b1421;border:1px solid var(--line);border-radius:11px;font-size:.84rem}.runrow{display:grid;grid-template-columns:1fr 90px;gap:8px;margin-top:10px}.runrow input,.rec input{width:100%;padding:10px;border-radius:10px;border:1px solid #34445f;background:#09121e;color:white}.save{background:var(--lime);color:#09101a;padding:10px}.phase{padding:12px;border:1px solid var(--line);border-radius:13px;background:#0b1421;margin-top:8px}.phase.current{border-color:#85b72d}.history{display:grid;gap:7px;margin-top:8px}.hist{display:flex;justify-content:space-between;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:#0b1421;font-size:.8rem}.rec{display:grid;grid-template-columns:1fr 1fr;gap:8px}.note{margin-top:10px;padding:10px 11px;border-left:4px solid var(--amber);background:#151c28;border-radius:9px;font-size:.78rem;color:#cbd5e1}
+.bottom{position:fixed;left:0;right:0;bottom:0;background:#09101aed;backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:9px 12px calc(9px + env(safe-area-inset-bottom));z-index:10}.bottomin{max-width:636px;margin:auto;display:flex;gap:7px;align-items:center}.time{min-width:82px;font-weight:900;font-size:1.2rem}.timerbtn{background:#202c40;color:#fff;padding:11px}.finish{background:var(--lime);color:#09101a;padding:11px;flex:1}.reset{border:0;background:none;color:#8290a4;font-size:.72rem}
+@media(max-width:390px){.stats{grid-template-columns:1fr 1fr}.stats .s:last-child{grid-column:1/-1}.nav button{font-size:.78rem}.runrow{grid-template-columns:1fr 78px}}
+</style></head><body><main class="app">
+<section class="hero"><div class="k">2027 ATHLETIC BODY PROJECT</div><h1>운동 플랜</h1><div class="sub">러닝 · 근력 · 로잉을 실제 운동처럼 기록하고 진행하는 트레이닝 앱</div><div class="stats"><div class="s"><b id="hp">—</b><span>현재 단계</span></div><div class="s"><b id="hr">0%</b><span>이번 주 달성률</span></div><div class="s"><b id="hs">0일</b><span>연속 완료</span></div></div></section>
+<nav class="nav"><button class="on" data-tab="today">오늘</button><button data-tab="week">주간</button><button data-tab="program">프로그램</button><button data-tab="records">기록</button></nav>
+<section class="panel on" id="today"><div class="card"><div class="row"><div><div class="meta" id="date"></div><div class="title" id="tt"></div></div><span id="type" class="badge lime"></span></div><div class="sub" id="desc" style="margin-top:6px"></div><div class="target" id="guide"></div><div class="bar" style="margin-top:12px"><i id="tb"></i></div><div class="meta" id="tp" style="margin-top:5px"></div></div><div id="content"></div><div class="note">통증, 어지럼, 비정상적으로 심한 호흡곤란이 있으면 운동을 중단하고 컨디션을 확인하세요.</div></section>
+<section class="panel" id="week"><div class="card"><div class="row"><div><div class="meta">이번 주</div><div class="title">주간 달성률</div></div><b id="wr">0%</b></div><div class="bar" style="margin-top:10px"><i id="wb"></i></div><div class="meta" id="ws" style="margin-top:5px"></div><div class="week" id="weekgrid"></div></div><div id="weekcards"></div></section>
+<section class="panel" id="program"><div class="card"><div class="meta">자동 진행</div><div class="title">월별 단계 프로그램</div><div class="sub" style="margin-top:5px">날짜에 따라 세트 수, 휴식, 러닝 목표 시간이 자동 변경됩니다.</div><div id="phases"></div></div><div class="card"><div class="meta">이번 단계 가이드</div><div class="title" id="pg"></div><div class="sub" id="pd" style="margin-top:5px"></div></div></section>
+<section class="panel" id="records"><div class="card"><div class="title">몸 상태 기록</div><div class="rec" style="margin-top:10px"><input id="weight" inputmode="decimal" placeholder="체중 kg"><input id="waist" inputmode="decimal" placeholder="허리 cm"></div><button class="save" id="savebody" style="width:100%;margin-top:8px">오늘 기록 저장</button></div><div class="card"><div class="title">최근 러닝 기록</div><div class="history" id="runs"></div></div><div class="card"><div class="title">최근 몸 기록</div><div class="history" id="bodylog"></div></div></section>
+</main><div class="bottom"><div class="bottomin"><div class="time" id="clock">01:15</div><button class="timerbtn" id="timer">시작</button><button class="finish" id="finish">오늘 완료</button><button class="reset" id="reset">초기화</button></div></div>
 <script>
-const plans=[
-{d:'월',title:'편한 러닝',type:'유산소',desc:'심폐와 체지방 감량을 위한 편한 강도 러닝',items:[
-['워밍업 걷기','5–8분','호흡과 관절을 천천히 올리기'],
-['편한 러닝','45–60분','대화 가능한 강도 유지'],
-['쿨다운 걷기','5분','심박을 천천히 낮추기'],
-['하체 스트레칭','5분','종아리·햄스트링·고관절']
-]},
-{d:'화',title:'상체 근력 + 로잉',type:'근력',desc:'가슴·등·어깨·팔을 고르게 쓰는 상체 중심일',items:[
-['인클라인 푸시업','3세트 × 8–15회','가슴·삼두'],
-['원암 덤벨/밴드 로우','3세트 × 10–15회','등'],
-['숄더 프레스','3세트 × 8–12회','어깨'],
-['레터럴 레이즈','2–3세트 × 12–15회','측면 어깨'],
-['컬 + 삼두 익스텐션','각 2세트 × 10–15회','팔'],
-['로잉머신','10–15분','편한 강도']
-]},
-{d:'수',title:'편한 러닝',type:'유산소',desc:'회복을 해치지 않는 중간 길이 러닝',items:[
-['워밍업 걷기','5분','천천히 시작'],
-['편한 러닝','35–50분','숨이 차지 않는 강도'],
-['쿨다운','5분','걷기 + 가벼운 스트레칭']
-]},
-{d:'목',title:'하체·코어 + 로잉',type:'근력',desc:'하체·둔근·복부·허리 안정성 강화',items:[
-['고블릿/의자 스쿼트','3세트 × 10–15회','하체 전반'],
-['루마니안 데드리프트/힙힌지','3세트 × 10–15회','햄스트링·둔근'],
-['스플릿 스쿼트','2–3세트 × 좌우 8–12회','균형·둔근'],
-['글루트 브리지','3세트 × 12–20회','둔근'],
-['데드버그','3세트 × 좌우 8–12회','코어'],
-['사이드 플랭크','2–3세트 × 좌우 20–40초','측면 코어'],
-['로잉머신','10–15분','편한 강도']
-]},
-{d:'금',title:'상체 근력 + 로잉',type:'근력',desc:'상체 2회차로 볼륨을 확보하고 근육 선명도 기반 만들기',items:[
-['푸시업/인클라인 푸시업','3세트 × 8–15회','가슴'],
-['로우','3세트 × 10–15회','등'],
-['숄더 프레스','3세트 × 8–12회','어깨'],
-['리어델트 플라이','2–3세트 × 12–15회','후면 어깨'],
-['컬 + 삼두','각 2세트 × 10–15회','팔'],
-['로잉머신','10–15분','편한 강도']
-]},
-{d:'토',title:'편한 러닝',type:'유산소',desc:'주간 유산소 볼륨을 채우는 가장 긴 편한 러닝',items:[
-['워밍업 걷기','5–8분','가볍게 시작'],
-['편한 러닝','50–60분','무리 없는 일정한 페이스'],
-['쿨다운','5–10분','걷기 + 스트레칭']
-]},
-{d:'일',title:'완전 휴식',type:'회복',desc:'운동 없음. 수면, 식사, 가벼운 산책 정도만.',items:[]}
-];
-let selected=Math.min(Math.max(new Date().getDay()-1,0),6);
-const key=(d,i)=>'fitness-plan-'+d+'-'+i;
-function renderToday(){
- const p=plans[selected]; todayLabel.textContent=p.d+'요일';todayTitle.textContent=p.title;todayType.textContent=p.type;todayDesc.textContent=p.desc;
- exerciseList.innerHTML=p.items.length?p.items.map((e,i)=>{const done=localStorage.getItem(key(selected,i))==='1';return '<div class="card exercise '+(done?'done':'')+'" data-i="'+i+'"><button class="check">'+(done?'✓':'')+'</button><div><div class="name">'+e[0]+'</div><div class="detail">'+e[1]+' · '+e[2]+'</div></div><span class="badge">'+(i+1)+'</span></div>'}).join(''):'<div class="card"><div class="title">오늘은 완전 휴식</div><div class="small" style="margin-top:6px">운동을 넣지 않습니다. 회복에 집중하세요.</div></div>';
- const done=p.items.filter((_,i)=>localStorage.getItem(key(selected,i))==='1').length;todayCount.textContent=p.items.length?done+' / '+p.items.length+' 완료':'휴식일';todayBar.style.width=p.items.length?(done/p.items.length*100)+'%':'100%';
- completeToday.textContent=p.items.length?'오늘 운동 완료':'휴식일';
-}
-function renderWeek(){
- weekDays.innerHTML=plans.map((p,i)=>'<button class="day '+(i===selected?'active ':'')+(localStorage.getItem('fitness-day-'+i)==='1'?'done':'')+'" data-i="'+i+'">'+p.d+'</button>').join('');
- weekPlan.innerHTML=plans.map((p,i)=>'<div class="card"><div class="row"><div><div class="label">'+p.d+'요일</div><div class="title">'+p.title+'</div></div><span class="badge '+(p.type==='근력'?'green':'')+'">'+p.type+'</span></div><div class="small" style="margin-top:7px">'+p.desc+'</div></div>').join('');
-}
-document.addEventListener('click',e=>{
- if(e.target.classList.contains('tab')){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));e.target.classList.add('active');document.getElementById(e.target.dataset.tab).classList.add('active')}
- if(e.target.classList.contains('day')){selected=+e.target.dataset.i;renderToday();renderWeek()}
- const ex=e.target.closest('.exercise');if(ex&&e.target.classList.contains('check')){const i=+ex.dataset.i;const d=localStorage.getItem(key(selected,i))==='1';localStorage.setItem(key(selected,i),d?'0':'1');renderToday()}
-});
-completeToday.onclick=()=>{const p=plans[selected];p.items.forEach((_,i)=>localStorage.setItem(key(selected,i),'1'));localStorage.setItem('fitness-day-'+selected,'1');renderToday();renderWeek()};
-resetToday.onclick=()=>{plans[selected].items.forEach((_,i)=>localStorage.removeItem(key(selected,i)));localStorage.removeItem('fitness-day-'+selected);renderToday();renderWeek()};
-saveStats.onclick=()=>{localStorage.setItem('fitness-weight',weight.value);localStorage.setItem('fitness-waist',waist.value);savedMsg.textContent='기록이 저장되었습니다.'};
-weight.value=localStorage.getItem('fitness-weight')||'';waist.value=localStorage.getItem('fitness-waist')||'';
-renderToday();renderWeek();
-if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'))}
-</script>
-</body>
-</html>
+const P=[{id:'a',name:'적응',range:'2026.09–11',start:'2026-09',end:'2026-11',mod:-1,rest:75,run:[45,40,50],detail:'루틴 정착과 기본 체력 확보. 각 세트는 2–3회 더 할 수 있는 여유를 남깁니다.'},{id:'b',name:'기초 근육',range:'2026.12–2027.03',start:'2026-12',end:'2027-03',mod:0,rest:75,run:[50,45,55],detail:'표준 운동량으로 올리고 반복수 상단을 달성하면 저항이나 난도를 조금 올립니다.'},{id:'c',name:'근육 강화',range:'2027.04–08',start:'2027-04',end:'2027-08',mod:1,rest:90,run:[50,45,60],detail:'주요 동작 세트를 늘려 근육량을 강화합니다. 자세를 유지하며 마지막 1–2회가 힘든 수준.'},{id:'d',name:'체형 정리',range:'2027.09–12',start:'2027-09',end:'2027-12',mod:0,rest:60,run:[45,40,55],detail:'근력은 유지하고 휴식 시간을 약간 줄이며 유산소를 안정적으로 유지합니다.'}];
+const plans=[{day:1,d:'월',title:'편한 러닝',type:'러닝',run:0,desc:'심폐와 체지방 관리의 기반을 만드는 편한 강도 러닝'},{day:2,d:'화',title:'상체 근력 + 로잉',type:'근력',desc:'가슴·등·어깨·팔을 균형 있게 강화',items:[['인클라인 푸시업',3,'8–15회','가슴·삼두',1],['원암 덤벨/밴드 로우',3,'10–15회','등',1],['숄더 프레스',3,'8–12회','어깨',1],['레터럴 레이즈',2,'12–15회','측면 어깨',0],['컬',2,'10–15회','이두',0],['삼두 익스텐션',2,'10–15회','삼두',0],['로잉머신',1,'10–15분','가벼운 심폐',0]]},{day:3,d:'수',title:'편한 러닝',type:'러닝',run:1,desc:'회복을 해치지 않는 중간 길이 러닝'},{day:4,d:'목',title:'하체·코어 + 로잉',type:'근력',desc:'하체·둔근·코어와 허리 안정성 강화',items:[['고블릿/의자 스쿼트',3,'10–15회','하체 전반',1],['루마니안 데드리프트/힙힌지',3,'10–15회','햄스트링·둔근',1],['스플릿 스쿼트',2,'좌우 8–12회','하체·균형',1],['글루트 브리지',3,'12–20회','둔근',0],['데드버그',3,'좌우 8–12회','코어',0],['사이드 플랭크',2,'좌우 20–40초','측면 코어',0],['로잉머신',1,'10–15분','가벼운 심폐',0]]},{day:5,d:'금',title:'상체 근력 + 로잉',type:'근력',desc:'상체 2회차로 주간 근육 자극량을 확보',items:[['푸시업/인클라인 푸시업',3,'8–15회','가슴',1],['로우',3,'10–15회','등',1],['숄더 프레스',3,'8–12회','어깨',1],['리어델트 플라이',2,'12–15회','후면 어깨',0],['컬',2,'10–15회','이두',0],['삼두 운동',2,'10–15회','삼두',0],['로잉머신',1,'10–15분','가벼운 심폐',0]]},{day:6,d:'토',title:'편한 러닝',type:'러닝',run:2,desc:'주간 유산소 볼륨을 채우는 가장 긴 편한 러닝'},{day:0,d:'일',title:'완전 휴식',type:'회복',desc:'정식 운동 없이 회복에 집중'}];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],pad=n=>String(n).padStart(2,'0'),dk=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()),ym=d=>d.getFullYear()+'-'+pad(d.getMonth()+1);
+const phase=(d=new Date())=>{let x=ym(d);return P.find(p=>x>=p.start&&x<=p.end)||P[x<P[0].start?0:P.length-1]},plan=d=>plans.find(p=>p.day===d.getDay()),store=k=>{try{return JSON.parse(localStorage.getItem('td-'+k)||'{}')}catch{return{}}},save=(k,v)=>localStorage.setItem('td-'+k,JSON.stringify(v));
+const sets=(ex,p)=>Math.max(1,ex[1]+(ex[4]?p.mod:Math.min(0,p.mod))),monday=d=>{let x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()-(x.getDay()+6)%7);return x},plus=(d,n)=>{let x=new Date(d);x.setDate(x.getDate()+n);return x},week=()=>Array.from({length:7},(_,i)=>{let date=plus(monday(new Date()),i);return{date,key:dk(date),p:plan(date)}}),done=k=>!!store(k).complete;
+function weekly(){let w=week().filter(x=>x.p.day!==0),n=w.filter(x=>done(x.key)).length;return{n,total:w.length,r:Math.round(n/w.length*100)}}function streak(){let n=0,d=new Date();for(let i=0;i<30;i++){let p=plan(d);if(p.day===0){d.setDate(d.getDate()-1);continue}if(done(dk(d)))n++;else break;d.setDate(d.getDate()-1)}return n}
+let left=phase().rest,timerId=null,total=left;function paintTimer(){$('#clock').textContent=pad(Math.floor(left/60))+':'+pad(left%60)}function rest(sec){clearInterval(timerId);timerId=null;left=total=sec;$('#timer').textContent='시작';paintTimer()}function toggle(){if(timerId){clearInterval(timerId);timerId=null;$('#timer').textContent='계속'}else{if(left<=0)left=total;$('#timer').textContent='일시정지';timerId=setInterval(()=>{left--;paintTimer();if(left<=0){clearInterval(timerId);timerId=null;$('#timer').textContent='다시';if(navigator.vibrate)navigator.vibrate([120,80,120])}},1000)}}
+function progress(){let d=new Date(),p=plan(d),ph=phase(),s=store(dk(d));if(p.day===0)return[1,1];if(p.type==='러닝')return[s.run?1:0,1];let a=0,b=0;p.items.forEach((e,ei)=>{let c=sets(e,ph);b+=c;for(let i=0;i<c;i++)if(s.sets&&s.sets[ei+'-'+i])a++});return[a,b]}
+function header(){let ph=phase(),w=weekly();$('#hp').textContent=ph.name;$('#hr').textContent=w.r+'%';$('#hs').textContent=streak()+'일'}
+function today(){let now=new Date(),p=plan(now),ph=phase(),key=dk(now),s=store(key);$('#date').textContent=now.getFullYear()+'.'+pad(now.getMonth()+1)+'.'+pad(now.getDate())+' · '+p.d+'요일';$('#tt').textContent=p.title;$('#type').textContent=p.type;$('#type').className='badge '+(p.type==='근력'?'lime':p.type==='러닝'?'blue':'');$('#desc').textContent=p.desc;$('#guide').textContent=ph.name+' 단계 · '+ph.detail;let [a,b]=progress(),r=Math.round(a/b*100);$('#tb').style.width=r+'%';$('#tp').textContent=p.day===0?'오늘은 완전 휴식일입니다.':a+' / '+b+' 완료 · '+r+'%';$('#finish').disabled=p.day===0;$('#finish').textContent=p.day===0?'휴식일':s.complete?'완료됨 ✓':'오늘 완료';
+ if(p.day===0){$('#content').innerHTML='<div class="card"><div class="title">회복도 프로그램의 일부입니다</div><div class="sub" style="margin-top:5px">가벼운 산책과 스트레칭 정도만 하고 정식 운동은 넣지 않습니다.</div></div>';return}
+ if(p.type==='러닝'){let target=ph.run[p.run];$('#content').innerHTML='<div class="card"><div class="title">오늘 목표 '+target+'분</div><div class="target">대화 가능한 편한 페이스 · 시작 5분은 특히 천천히</div><div class="runrow"><input id="runmin" type="number" inputmode="numeric" min="1" max="180" placeholder="실제 러닝 분" value="'+(s.run||'')+'"><button class="save" id="saverun">기록</button></div></div>';$('#saverun').onclick=()=>{let v=Math.max(0,parseInt($('#runmin').value)||0),x=store(key);x.run=v;save(key,x);if(v){let logs=JSON.parse(localStorage.getItem('runs')||'[]').filter(q=>q.date!==key);logs.unshift({date:key,min:v,target});localStorage.setItem('runs',JSON.stringify(logs.slice(0,40)))}render()}}
+ else{$('#content').innerHTML=p.items.map((e,ei)=>{let c=sets(e,ph),bs='';for(let i=0;i<c;i++){let ok=s.sets&&s.sets[ei+'-'+i];bs+='<button class="set '+(ok?'done':'')+'" data-e="'+ei+'" data-s="'+i+'">'+(i+1)+'세트'+(ok?' ✓':'')+'</button>'}return'<div class="card exercise"><div class="row"><div><div class="title">'+e[0]+'</div><div class="meta">'+e[2]+' · '+e[3]+'</div></div><span class="badge">'+c+'세트</span></div><div class="sets">'+bs+'</div></div>'}).join('');$$('.set').forEach(b=>b.onclick=()=>{let x=store(key);x.sets=x.sets||{};let id=b.dataset.e+'-'+b.dataset.s;x.sets[id]=!x.sets[id];save(key,x);if(x.sets[id]){rest(ph.rest);toggle()}render()})}}
+function weekui(){let w=weekly(),arr=week(),tk=dk(new Date());$('#wr').textContent=w.r+'%';$('#wb').style.width=w.r+'%';$('#ws').textContent=w.n+' / '+w.total+'일 완료';$('#weekgrid').innerHTML=arr.map(x=>'<div class="wd '+(done(x.key)?'done ':'')+(x.p.day===0?'rest':'')+'"><div>'+x.p.d+'</div><small>'+(x.p.day===0?'휴식':done(x.key)?'완료':'예정')+'</small></div>').join('');$('#weekcards').innerHTML=arr.map(x=>'<div class="card"><div class="row"><div><div class="meta">'+x.p.d+'요일 · '+x.key.slice(5).replace('-','/')+'</div><div class="title">'+x.p.title+'</div></div><span class="badge '+(x.p.type==='근력'?'lime':x.p.type==='러닝'?'blue':'')+'">'+x.p.type+'</span></div><div class="sub" style="margin-top:5px">'+x.p.desc+'</div></div>').join('')}
+function program(){let ph=phase();$('#phases').innerHTML=P.map(p=>'<div class="phase '+(p.id===ph.id?'current':'')+'"><b>'+p.name+' · '+p.range+(p.id===ph.id?' · 현재':'')+'</b><div class="sub" style="margin-top:4px">'+p.detail+'</div></div>').join('');$('#pg').textContent=ph.name+' 단계';$('#pd').textContent='휴식 '+ph.rest+'초 · 월/수/토 러닝 목표 '+ph.run.join('/')+'분'}
+function records(){let r=JSON.parse(localStorage.getItem('runs')||'[]'),b=JSON.parse(localStorage.getItem('body')||'[]');$('#runs').innerHTML=r.length?r.slice(0,8).map(x=>'<div class="hist"><span>'+x.date+'</span><b>'+x.min+'분</b></div>').join(''):'<div class="sub">아직 러닝 기록이 없습니다.</div>';$('#bodylog').innerHTML=b.length?b.slice(0,8).map(x=>'<div class="hist"><span>'+x.date+'</span><b>'+(x.w||'—')+'kg · '+(x.wa||'—')+'cm</b></div>').join(''):'<div class="sub">아직 몸 기록이 없습니다.</div>'}
+function finish(){let d=new Date(),p=plan(d),key=dk(d),x=store(key);if(p.day===0)return;if(p.type==='러닝'&&!x.run){alert('러닝 시간을 먼저 기록해 주세요.');return}x.complete=!x.complete;save(key,x);render()}function resetday(){if(!confirm('오늘 체크와 기록을 초기화할까요?'))return;localStorage.removeItem('td-'+dk(new Date()));render()}function savebody(){let w=$('#weight').value.trim(),wa=$('#waist').value.trim();if(!w&&!wa)return;let date=dk(new Date()),a=JSON.parse(localStorage.getItem('body')||'[]').filter(x=>x.date!==date);a.unshift({date,w,wa});localStorage.setItem('body',JSON.stringify(a.slice(0,60)));$('#weight').value='';$('#waist').value='';records()}function render(){header();today();weekui();program();records();paintTimer()}
+$$('.nav button').forEach(b=>b.onclick=()=>{$$('.nav button').forEach(x=>x.classList.remove('on'));$$('.panel').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('#'+b.dataset.tab).classList.add('on')});$('#timer').onclick=toggle;$('#finish').onclick=finish;$('#reset').onclick=resetday;$('#savebody').onclick=savebody;rest(phase().rest);render();if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=trainer-v3'));
+</script></body></html>
