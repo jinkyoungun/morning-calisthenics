@@ -1,15 +1,1 @@
-{
-  "name":"2027 운동 플랜",
-  "short_name":"운동 플랜",
-  "description":"2027년 12월 목표를 위한 주 6일 운동 프로그램",
-  "id":"./",
-  "start_url":"./",
-  "scope":"./",
-  "display":"standalone",
-  "background_color":"#0b1220",
-  "theme_color":"#111827",
-  "icons":[
-    {"src":"./motion-icon-192.png?v=fitness-20260918","sizes":"192x192","type":"image/png","purpose":"any"},
-    {"src":"./motion-icon-512.png?v=fitness-20260918","sizes":"512x512","type":"image/png","purpose":"any"}
-  ]
-}
+{"name":"2027 운동 플랜","short_name":"운동 플랜","description":"러닝·근력·로잉을 관리하는 개인 트레이닝 PWA","id":"./","start_url":"./","scope":"./","display":"standalone","background_color":"#09101a","theme_color":"#0a101b","icons":[{"src":"./motion-icon-180.png?v=trainer-v3","sizes":"180x180","type":"image/png","purpose":"any"}]}
