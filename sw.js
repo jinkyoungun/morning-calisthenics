@@ -1,5 +1,5 @@
-const CACHE = 'morning-calisthenics-v3-icon-refresh';
-const CORE = ['./', './index.html', './manifest.webmanifest', './motion-icon-180.png', './motion-icon-192.png', './motion-icon-512.png'];
+const CACHE = 'morning-calisthenics-v4-fitness-icon';
+const CORE = ['./', './index.html', './manifest.webmanifest', './motion-icon-180.png?v=fitness-20260918', './motion-icon-192.png', './motion-icon-512.png'];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));
