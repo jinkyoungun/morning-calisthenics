@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#0a101b"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="운동 플랜"><link rel="manifest" href="./manifest.webmanifest?v=trainer-v11"><link rel="apple-touch-icon" sizes="180x180" href="./motion-icon-180.png?v=trainer-v11"><title>2027 운동 플랜</title><style>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#0a101b"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="운동 플랜"><link rel="manifest" href="./manifest.webmanifest?v=trainer-v12"><link rel="apple-touch-icon" sizes="180x180" href="./motion-icon-180.png?v=trainer-v12"><title>2027 운동 플랜</title><style>
 :root{--bg:#09101a;--c:#111a29;--c2:#0d1624;--line:#253248;--ink:#f8fafc;--sub:#94a3b8;--lime:#b8ff35;--blue:#74b9ff;--amber:#fbbf24}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:linear-gradient(#0b1320,#09101a);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif}.app{max-width:660px;margin:auto;min-height:100vh;padding:calc(16px + env(safe-area-inset-top)) 15px calc(104px + env(safe-area-inset-bottom))}
 .hero,.card{background:linear-gradient(180deg,#131d2d,#0f1725);border:1px solid var(--line);border-radius:20px}.hero{padding:18px}.hero h1{margin:5px 0;font-size:1.55rem}.k{font-size:.75rem;color:var(--lime);font-weight:900;letter-spacing:.1em}.sub,.meta{color:var(--sub);font-size:.82rem}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.s{background:#0b1421;border:1px solid var(--line);border-radius:13px;padding:10px}.s b{display:block}.s span{font-size:.7rem;color:var(--sub)}
@@ -8,7 +8,7 @@
 .bottom{position:fixed;left:0;right:0;bottom:0;background:#09101aed;backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:9px 12px calc(9px + env(safe-area-inset-bottom));z-index:10}.bottomin{max-width:636px;margin:auto;display:flex;gap:7px;align-items:center}.time{min-width:82px;font-weight:900;font-size:1.2rem}.timerbtn{background:#202c40;color:#fff;padding:11px}.finish{background:var(--lime);color:#09101a;padding:11px;flex:1}.reset{border:0;background:none;color:#8290a4;font-size:.72rem}
 @media(max-width:390px){.stats{grid-template-columns:1fr 1fr}.stats .s:last-child{grid-column:1/-1}.nav button{font-size:.78rem}.runrow{grid-template-columns:1fr 78px}}
 </style></head><body><main class="app">
-<section class="hero"><div class="k">2027 ATHLETIC BODY PROJECT</div><h1>운동 플랜</h1><div class="sub">러닝 · 근력 · 로잉을 실제 운동처럼 기록하고 진행하는 트레이닝 앱</div><div class="stats"><div class="s"><b id="hp">—</b><span>현재 단계</span></div><div class="s"><b id="hr">0%</b><span>이번 주 달성률</span></div><div class="s"><b id="hs">0일</b><span>연속 완료</span></div></div></section>
+<section class="hero"><div class="k">2027 ATHLETIC BODY PROJECT</div><h1>운동 플랜</h1><div class="sub">덤벨 · 맨몸 · 로잉 · 실내자전거 · 러닝 | 바벨·벤치·헬스장 기구 불필요</div><div class="stats"><div class="s"><b id="hp">—</b><span>현재 단계</span></div><div class="s"><b id="hr">0%</b><span>이번 주 달성률</span></div><div class="s"><b id="hs">0일</b><span>연속 완료</span></div></div></section>
 <nav class="nav"><button class="on" data-tab="today">오늘</button><button data-tab="week">주간</button><button data-tab="program">프로그램</button><button data-tab="records">기록</button></nav>
 <section class="panel on" id="today"><div class="card"><div class="row"><div><div class="meta" id="date"></div><div class="title" id="tt"></div></div><span id="type" class="badge lime"></span></div><div class="sub" id="desc" style="margin-top:6px"></div><div class="target" id="guide"></div><div class="bar" style="margin-top:12px"><i id="tb"></i></div><div class="meta" id="tp" style="margin-top:5px"></div></div><div id="content"></div><div class="note">통증, 어지럼, 비정상적으로 심한 호흡곤란이 있으면 운동을 중단하고 컨디션을 확인하세요.</div></section>
 <section class="panel" id="week"><div class="card"><div class="row"><div><div class="meta">이번 주</div><div class="title">주간 달성률</div></div><b id="wr">0%</b></div><div class="bar" style="margin-top:10px"><i id="wb"></i></div><div class="meta" id="ws" style="margin-top:5px"></div><div class="week" id="weekgrid"></div></div><div id="weekcards"></div></section>
@@ -17,27 +17,42 @@
 </main><div class="bottom"><div class="bottomin"><div class="time" id="clock">01:15</div><button class="timerbtn" id="timer">시작</button><button class="finish" id="finish">오늘 완료</button><button class="reset" id="reset">초기화</button></div></div>
 <script>
 const P=[{id:'a',name:'적응',range:'2026.09–11',start:'2026-09',end:'2026-11',mod:-1,rest:75,run:[45,40,50],detail:'루틴 정착과 기본 체력 확보. 각 세트는 2–3회 더 할 수 있는 여유를 남깁니다.'},{id:'b',name:'기초 근육',range:'2026.12–2027.03',start:'2026-12',end:'2027-03',mod:0,rest:75,run:[50,45,55],detail:'표준 운동량으로 올리고 반복수 상단을 달성하면 저항이나 난도를 조금 올립니다.'},{id:'c',name:'근육 강화',range:'2027.04–08',start:'2027-04',end:'2027-08',mod:1,rest:90,run:[50,45,60],detail:'주요 동작 세트를 늘려 근육량을 강화합니다. 자세를 유지하며 마지막 1–2회가 힘든 수준.'},{id:'d',name:'체형 정리',range:'2027.09–12',start:'2027-09',end:'2027-12',mod:0,rest:60,run:[45,40,55],detail:'근력은 유지하고 휴식 시간을 약간 줄이며 유산소를 안정적으로 유지합니다.'}];
-const plans=[{day:1,d:'월',title:'편한 러닝',type:'러닝',run:0,desc:'심폐와 체지방 관리의 기반을 만드는 편한 강도 러닝'},{day:2,d:'화',title:'상체 근력 + 로잉',type:'근력',desc:'가슴·등·어깨·팔을 균형 있게 강화',items:[['인클라인 푸시업',3,'8–15회','가슴·삼두',1],['원암 덤벨/밴드 로우',3,'10–15회','등',1],['숄더 프레스',3,'8–12회','어깨',1],['레터럴 레이즈',2,'12–15회','측면 어깨',0],['컬',2,'10–15회','이두',0],['삼두 익스텐션',2,'10–15회','삼두',0],['로잉머신',1,'10–15분','가벼운 심폐',0]]},{day:3,d:'수',title:'편한 러닝',type:'러닝',run:1,desc:'회복을 해치지 않는 중간 길이 러닝'},{day:4,d:'목',title:'하체·코어 + 로잉',type:'근력',desc:'하체·둔근·코어와 허리 안정성 강화',items:[['고블릿/의자 스쿼트',3,'10–15회','하체 전반',1],['루마니안 데드리프트/힙힌지',3,'10–15회','햄스트링·둔근',1],['스플릿 스쿼트',2,'좌우 8–12회','하체·균형',1],['글루트 브리지',3,'12–20회','둔근',0],['데드버그',3,'좌우 8–12회','코어',0],['사이드 플랭크',2,'좌우 20–40초','측면 코어',0],['로잉머신',1,'10–15분','가벼운 심폐',0]]},{day:5,d:'금',title:'상체 근력 + 로잉',type:'근력',desc:'상체 2회차로 주간 근육 자극량을 확보',items:[['푸시업/인클라인 푸시업',3,'8–15회','가슴',1],['로우',3,'10–15회','등',1],['숄더 프레스',3,'8–12회','어깨',1],['리어델트 플라이',2,'12–15회','후면 어깨',0],['컬',2,'10–15회','이두',0],['삼두 운동',2,'10–15회','삼두',0],['로잉머신',1,'10–15분','가벼운 심폐',0]]},{day:6,d:'토',title:'편한 러닝',type:'러닝',run:2,desc:'주간 유산소 볼륨을 채우는 가장 긴 편한 러닝'},{day:0,d:'일',title:'완전 휴식',type:'회복',desc:'정식 운동 없이 회복에 집중'}];
-const VIDEOS={
-'인클라인 푸시업':{url:'https://www.youtube.com/watch?v=ys9lVo25Sbs',coach:'Team 1st · 인클라인 푸시업'},
-'푸시업/인클라인 푸시업':{url:'https://www.youtube.com/watch?v=aoH7qNedO8k',coach:'피지컬갤러리 · 푸시업 자세'},
-'원암 덤벨/밴드 로우':{url:'https://www.youtube.com/watch?v=0WzjuCvnQLg&t=602s',coach:'설기관 · 원암 덤벨 로우'},
-'로우':{url:'https://www.youtube.com/watch?v=0WzjuCvnQLg&t=602s',coach:'설기관 · 덤벨 로우'},
-'숄더 프레스':{url:'https://www.youtube.com/watch?v=WUmPp8cci_o',coach:'핏블리 · 이준호 선수'},
-'레터럴 레이즈':{url:'https://www.youtube.com/watch?v=WUmPp8cci_o',coach:'핏블리 · 이준호 선수'},
-'리어델트 플라이':{url:'https://www.youtube.com/watch?v=WUmPp8cci_o',coach:'핏블리 · 이준호 선수'},
-'컬':{url:'https://www.youtube.com/watch?v=0WzjuCvnQLg&t=1064s',coach:'설기관 · 덤벨 컬'},
-'삼두 익스텐션':{url:'https://www.youtube.com/watch?v=0WzjuCvnQLg&t=1381s',coach:'설기관 · 오버헤드 익스텐션'},
-'삼두 운동':{url:'https://www.youtube.com/watch?v=0WzjuCvnQLg&t=1381s',coach:'설기관 · 오버헤드 익스텐션'},
-'고블릿/의자 스쿼트':{url:'https://youtu.be/1RcAgzHHm20',coach:'한국어 · 고블릿 스쿼트 자세'},
-'루마니안 데드리프트/힙힌지':{url:'https://www.youtube.com/watch?v=uHAroYEw2cg',coach:'어썸블리스 · 루마니안 데드리프트'},
-'스플릿 스쿼트':{url:'https://www.youtube.com/watch?v=uHAroYEw2cg',coach:'어썸블리스 · 불가리안 스플릿 스쿼트'},
-'글루트 브리지':{url:'https://www.youtube.com/results?search_query=%EB%B8%8C%EB%A6%BF%EC%A7%80+%EC%9D%B4%EB%A0%87%EA%B2%8C+%ED%95%B4%EC%95%BC+%EC%97%89%EB%8D%A9%EC%9D%B4+%EA%B7%BC%EC%9C%A1%EC%9D%B4+%EB%8B%AC%EB%9D%BC%EC%A7%91%EB%8B%88%EB%8B%A4+%EC%86%A1%EC%98%81%EB%AF%BC',coach:'굿라이프 · 송영민'},
-'데드버그':{url:'https://www.youtube.com/shorts/18xbR5AW2qY',coach:'자생한방병원 · 데드버그'},
-'사이드 플랭크':{url:'https://www.youtube.com/watch?v=GZMVRFsSHzk',coach:'한국어 · 사이드 플랭크 자세'},
-'로잉머신':{url:'https://www.youtube.com/results?search_query=%EB%A1%9C%EC%9E%89%EB%A8%B8%EC%8B%A0+%ED%83%80%EB%8A%94+%EB%B2%95+%EC%9D%B4+%EC%98%81%EC%83%81+%ED%95%98%EB%82%98%EB%A9%B4+%EB%81%9D+%EC%A1%B0%EC%A0%95%EA%B5%AD%EB%8C%80',coach:'남빅토리 · 조정 국가대표'}
+const plans=[{day:1,d:'월',title:'편한 러닝',type:'러닝',run:0,desc:'심폐와 체지방 관리의 기반을 만드는 편한 강도 러닝'},{day:2,d:'화',title:'상체 근력 + 로잉',type:'근력',desc:'가슴·등·어깨·팔을 균형 있게 강화',items:[['인클라인 푸시업',3,'8–15회','가슴·삼두 · 안정적인 책상/벽 지지',1],['원암 덤벨 로우',3,'10–15회','등',1],['덤벨 숄더 프레스',2,'8–12회','어깨',1],['덤벨 레터럴 레이즈',2,'12–15회','측면 어깨',0],['덤벨 컬',2,'10–15회','이두',0],['덤벨 오버헤드 삼두 익스텐션',2,'10–15회','삼두',0],['로잉머신',1,'10–15분','가벼운 심폐',0]]},{day:3,d:'수',title:'편한 러닝',type:'러닝',run:1,desc:'회복을 해치지 않는 중간 길이 러닝'},{day:4,d:'목',title:'하체·코어 + 로잉',type:'근력',desc:'하체·둔근·코어와 허리 안정성 강화',items:[['덤벨 고블릿 스쿼트',3,'10–15회','하체 전반',1],['덤벨 루마니안 데드리프트',3,'10–15회','햄스트링·둔근',1],['맨몸 스플릿 스쿼트',2,'좌우 8–12회','하체·균형',1],['맨몸 글루트 브리지',3,'12–20회','둔근',0],['데드버그',3,'좌우 8–12회','코어',0],['사이드 플랭크',2,'좌우 20–40초','측면 코어',0],['로잉머신',1,'10–15분','가벼운 심폐',0]]},{day:5,d:'금',title:'상체 근력 + 로잉',type:'근력',desc:'상체 2회차로 주간 근육 자극량을 확보',items:[['푸시업 (필요시 인클라인)',3,'8–15회','가슴',1],['원암 덤벨 로우',3,'10–15회','등',1],['덤벨 숄더 프레스',2,'8–12회','어깨',1],['덤벨 리어델트 플라이',2,'12–15회','후면 어깨',0],['덤벨 컬',2,'10–15회','이두',0],['덤벨 오버헤드 삼두 익스텐션',2,'10–15회','삼두',0],['로잉머신',1,'10–15분','가벼운 심폐',0]]},{day:6,d:'토',title:'편한 러닝',type:'러닝',run:2,desc:'주간 유산소 볼륨을 채우는 가장 긴 편한 러닝'},{day:0,d:'일',title:'완전 휴식',type:'회복',desc:'정식 운동 없이 회복에 집중'}];
+const VIDEO_QUERIES={
+'인클라인 푸시업':'인클라인 푸시업 자세 초보',
+'푸시업 (필요시 인클라인)':'푸시업 초보 올바른 자세',
+'원암 덤벨 로우':'원암 덤벨 로우 자세 홈트',
+'덤벨 숄더 프레스':'덤벨 숄더 프레스 서서 자세',
+'덤벨 레터럴 레이즈':'덤벨 사이드 레터럴 레이즈 자세',
+'덤벨 리어델트 플라이':'덤벨 벤트오버 리버스 플라이 자세',
+'덤벨 컬':'덤벨 바이셉 컬 자세',
+'덤벨 오버헤드 삼두 익스텐션':'덤벨 오버헤드 트라이셉스 익스텐션 자세',
+'덤벨 고블릿 스쿼트':'덤벨 고블릿 스쿼트 자세',
+'덤벨 루마니안 데드리프트':'덤벨 루마니안 데드리프트 자세',
+'맨몸 스플릿 스쿼트':'맨몸 스플릿 스쿼트 자세',
+'맨몸 글루트 브리지':'맨몸 글루트 브리지 자세',
+'데드버그':'데드버그 코어 운동 자세',
+'사이드 플랭크':'사이드 플랭크 정확한 자세',
+'로잉머신':'로잉머신 자세 조정 국가대표'
 };
-function videoButton(name){const v=VIDEOS[name];return v?'<a class="videolink" href="'+v.url+'" target="_blank" rel="noopener noreferrer">▶ 자세 영상 <span class="coach">'+v.coach+'</span></a>':''}
+const NOTES={
+'인클라인 푸시업':'벽이나 흔들리지 않는 견고한 책상에 손을 대고 진행합니다. 의자 등 움직일 수 있는 물건은 피하세요.',
+'푸시업 (필요시 인클라인)':'바닥 푸시업이 어려우면 벽/견고한 책상에서 인클라인으로 수행합니다.',
+'원암 덤벨 로우':'벤치 없이 반대손을 자신의 허벅지에 얹고 상체를 숙여 실시합니다.',
+'덤벨 숄더 프레스':'등받이나 벤치 없이 서서 덤벨을 머리 위로 밀어 올립니다. 숨을 참지 마세요.',
+'덤벨 레터럴 레이즈':'가벼운 덤벨로 어깨 높이 정도까지만 팔을 올립니다.',
+'덤벨 리어델트 플라이':'무릎을 살짝 굽히고 상체를 숙여 가벼운 덤벨을 옆으로 벌립니다.',
+'덤벨 컬':'팔꿈치를 몸 가까이 고정하고 반동 없이 천천히 실시합니다.',
+'덤벨 오버헤드 삼두 익스텐션':'한 덤벨을 양손으로 잡고 팔꿈치를 굽혔다 펴세요. 어깨가 불편하면 중단합니다.',
+'덤벨 고블릿 스쿼트':'한 덤벨을 가슴 앞에 잡고 발 전체로 바닥을 누르며 앉았다 일어납니다.',
+'덤벨 루마니안 데드리프트':'덤벨을 다리 가까이 두고 엉덩이를 뒤로 보내며 상체를 숙입니다. 허리 중립을 유지하세요.',
+'맨몸 스플릿 스쿼트':'제자리에서 앞뒤로 다리를 벌려 앉았다 일어납니다. 벤치가 필요 없습니다.',
+'맨몸 글루트 브리지':'바닥에서 무릎을 세우고 엉덩이를 들어 올립니다.',
+'데드버그':'허리가 과하게 뜨지 않게 유지하며 팔다리를 교대로 움직입니다.',
+'사이드 플랭크':'팔꿈치를 어깨 아래에 놓고 몸을 일직선으로 유지합니다.',
+'로잉머신':'다리로 밀기 → 상체 열기 → 팔 당기기 순서로 가볍게 수행합니다.'
+};
+function videoButton(name){const q=VIDEO_QUERIES[name],n=NOTES[name]||'';return '<div class="target">'+n+'</div>'+(q?'<a class="videolink" href="https://www.youtube.com/results?search_query='+encodeURIComponent(q)+'" target="_blank" rel="noopener noreferrer">▶ 한국어 동작 영상 검색 <span class="coach">검색 결과 · 개별 영상 미검증</span></a>':'')}
 const $=s=>document.querySelector(s),qsa=s=>[...document.querySelectorAll(s)],pad=n=>String(n).padStart(2,'0'),dk=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()),ym=d=>d.getFullYear()+'-'+pad(d.getMonth()+1);
 const phase=(d=new Date())=>{let x=ym(d);return P.find(p=>x>=p.start&&x<=p.end)||P[x<P[0].start?0:P.length-1]},plan=d=>plans.find(p=>p.day===d.getDay()),store=k=>{try{return JSON.parse(localStorage.getItem('td-'+k)||'{}')}catch{return{}}},save=(k,v)=>localStorage.setItem('td-'+k,JSON.stringify(v));
 const sets=(ex,p)=>Math.max(1,ex[1]+(ex[4]?p.mod:Math.min(0,p.mod))),monday=d=>{let x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()-(x.getDay()+6)%7);return x},plus=(d,n)=>{let x=new Date(d);x.setDate(x.getDate()+n);return x},week=()=>Array.from({length:7},(_,i)=>{let date=plus(monday(new Date()),i);return{date,key:dk(date),p:plan(date)}}),done=k=>!!store(k).complete;
@@ -81,5 +96,5 @@ async function restoreBackupFile(ev){
   }catch(e){alert('백업 파일을 불러오지 못했습니다.\n'+e.message);$('#backupStatus').textContent='복원 실패: 올바른 운동 앱 백업 파일인지 확인해 주세요.'}
 }
 function render(){header();today();weekui();program();records();paintTimer()}
-qsa('.nav button').forEach(b=>b.onclick=()=>{qsa('.nav button').forEach(x=>x.classList.remove('on'));qsa('.panel').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('#'+b.dataset.tab).classList.add('on')});$('#timer').onclick=toggle;$('#finish').onclick=finish;$('#reset').onclick=resetday;$('#savebody').onclick=savebody;$('#backupSave').onclick=saveBackupFile;$('#backupLoad').onclick=openRestore;$('#backupFile').onchange=restoreBackupFile;rest(phase().rest);render();setInterval(checkDateChange,30000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkDateChange()});window.addEventListener('focus',checkDateChange);if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=trainer-v11'));
+qsa('.nav button').forEach(b=>b.onclick=()=>{qsa('.nav button').forEach(x=>x.classList.remove('on'));qsa('.panel').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('#'+b.dataset.tab).classList.add('on')});$('#timer').onclick=toggle;$('#finish').onclick=finish;$('#reset').onclick=resetday;$('#savebody').onclick=savebody;$('#backupSave').onclick=saveBackupFile;$('#backupLoad').onclick=openRestore;$('#backupFile').onchange=restoreBackupFile;rest(phase().rest);render();setInterval(checkDateChange,30000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkDateChange()});window.addEventListener('focus',checkDateChange);if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=trainer-v12'));
 </script></body></html>
