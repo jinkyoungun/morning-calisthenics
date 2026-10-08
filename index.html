@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#0a101b"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="운동 플랜"><link rel="manifest" href="./manifest.webmanifest?v=trainer-v10"><link rel="apple-touch-icon" sizes="180x180" href="./motion-icon-180.png?v=trainer-v10"><title>2027 운동 플랜</title><style>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#0a101b"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="운동 플랜"><link rel="manifest" href="./manifest.webmanifest?v=trainer-v11"><link rel="apple-touch-icon" sizes="180x180" href="./motion-icon-180.png?v=trainer-v11"><title>2027 운동 플랜</title><style>
 :root{--bg:#09101a;--c:#111a29;--c2:#0d1624;--line:#253248;--ink:#f8fafc;--sub:#94a3b8;--lime:#b8ff35;--blue:#74b9ff;--amber:#fbbf24}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:linear-gradient(#0b1320,#09101a);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif}.app{max-width:660px;margin:auto;min-height:100vh;padding:calc(16px + env(safe-area-inset-top)) 15px calc(104px + env(safe-area-inset-bottom))}
 .hero,.card{background:linear-gradient(180deg,#131d2d,#0f1725);border:1px solid var(--line);border-radius:20px}.hero{padding:18px}.hero h1{margin:5px 0;font-size:1.55rem}.k{font-size:.75rem;color:var(--lime);font-weight:900;letter-spacing:.1em}.sub,.meta{color:var(--sub);font-size:.82rem}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.s{background:#0b1421;border:1px solid var(--line);border-radius:13px;padding:10px}.s b{display:block}.s span{font-size:.7rem;color:var(--sub)}
@@ -19,23 +19,23 @@
 const P=[{id:'a',name:'적응',range:'2026.09–11',start:'2026-09',end:'2026-11',mod:-1,rest:75,run:[45,40,50],detail:'루틴 정착과 기본 체력 확보. 각 세트는 2–3회 더 할 수 있는 여유를 남깁니다.'},{id:'b',name:'기초 근육',range:'2026.12–2027.03',start:'2026-12',end:'2027-03',mod:0,rest:75,run:[50,45,55],detail:'표준 운동량으로 올리고 반복수 상단을 달성하면 저항이나 난도를 조금 올립니다.'},{id:'c',name:'근육 강화',range:'2027.04–08',start:'2027-04',end:'2027-08',mod:1,rest:90,run:[50,45,60],detail:'주요 동작 세트를 늘려 근육량을 강화합니다. 자세를 유지하며 마지막 1–2회가 힘든 수준.'},{id:'d',name:'체형 정리',range:'2027.09–12',start:'2027-09',end:'2027-12',mod:0,rest:60,run:[45,40,55],detail:'근력은 유지하고 휴식 시간을 약간 줄이며 유산소를 안정적으로 유지합니다.'}];
 const plans=[{day:1,d:'월',title:'편한 러닝',type:'러닝',run:0,desc:'심폐와 체지방 관리의 기반을 만드는 편한 강도 러닝'},{day:2,d:'화',title:'상체 근력 + 로잉',type:'근력',desc:'가슴·등·어깨·팔을 균형 있게 강화',items:[['인클라인 푸시업',3,'8–15회','가슴·삼두',1],['원암 덤벨/밴드 로우',3,'10–15회','등',1],['숄더 프레스',3,'8–12회','어깨',1],['레터럴 레이즈',2,'12–15회','측면 어깨',0],['컬',2,'10–15회','이두',0],['삼두 익스텐션',2,'10–15회','삼두',0],['로잉머신',1,'10–15분','가벼운 심폐',0]]},{day:3,d:'수',title:'편한 러닝',type:'러닝',run:1,desc:'회복을 해치지 않는 중간 길이 러닝'},{day:4,d:'목',title:'하체·코어 + 로잉',type:'근력',desc:'하체·둔근·코어와 허리 안정성 강화',items:[['고블릿/의자 스쿼트',3,'10–15회','하체 전반',1],['루마니안 데드리프트/힙힌지',3,'10–15회','햄스트링·둔근',1],['스플릿 스쿼트',2,'좌우 8–12회','하체·균형',1],['글루트 브리지',3,'12–20회','둔근',0],['데드버그',3,'좌우 8–12회','코어',0],['사이드 플랭크',2,'좌우 20–40초','측면 코어',0],['로잉머신',1,'10–15분','가벼운 심폐',0]]},{day:5,d:'금',title:'상체 근력 + 로잉',type:'근력',desc:'상체 2회차로 주간 근육 자극량을 확보',items:[['푸시업/인클라인 푸시업',3,'8–15회','가슴',1],['로우',3,'10–15회','등',1],['숄더 프레스',3,'8–12회','어깨',1],['리어델트 플라이',2,'12–15회','후면 어깨',0],['컬',2,'10–15회','이두',0],['삼두 운동',2,'10–15회','삼두',0],['로잉머신',1,'10–15분','가벼운 심폐',0]]},{day:6,d:'토',title:'편한 러닝',type:'러닝',run:2,desc:'주간 유산소 볼륨을 채우는 가장 긴 편한 러닝'},{day:0,d:'일',title:'완전 휴식',type:'회복',desc:'정식 운동 없이 회복에 집중'}];
 const VIDEOS={
-'인클라인 푸시업':{url:'https://www.youtube.com/watch?v=Z88Rl5bpnmI',coach:'Jeremy Ethier'},
-'푸시업/인클라인 푸시업':{url:'https://www.youtube.com/watch?v=Z88Rl5bpnmI',coach:'Jeremy Ethier'},
-'원암 덤벨/밴드 로우':{url:'https://www.youtube.com/watch?v=gfUg6qWohTk',coach:'ATHLEAN-X · Jeff Cavaliere'},
-'로우':{url:'https://www.youtube.com/watch?v=gfUg6qWohTk',coach:'ATHLEAN-X · Jeff Cavaliere'},
-'숄더 프레스':{url:'https://www.youtube.com/watch?v=V0dYd1jyLpE',coach:'Jeremy Ethier'},
-'레터럴 레이즈':{url:'https://www.youtube.com/watch?v=V0dYd1jyLpE',coach:'Jeremy Ethier'},
-'리어델트 플라이':{url:'https://www.youtube.com/watch?v=V0dYd1jyLpE',coach:'Jeremy Ethier'},
-'컬':{url:'https://learn.athleanx.com/articles/incline-dumbbell-curl',coach:'ATHLEAN-X · Jeff Cavaliere'},
-'삼두 익스텐션':{url:'https://learn.athleanx.com/articles/cable-tricep-extensions',coach:'ATHLEAN-X · Jeff Cavaliere'},
-'삼두 운동':{url:'https://learn.athleanx.com/articles/cable-tricep-extensions',coach:'ATHLEAN-X · Jeff Cavaliere'},
-'고블릿/의자 스쿼트':{url:'https://bretcontreras.com/a-set-of-goblet-squats-per-day-keeps-the-doctor-away/',coach:'Bret Contreras'},
-'루마니안 데드리프트/힙힌지':{url:'https://bretcontreras.com/the-3-most-basic-lower-body-movement-patterns-box-squat-hip-hinge-rdl-glute-bridge/',coach:'Bret Contreras'},
-'스플릿 스쿼트':{url:'https://www.youtube.com/watch?v=bwhl_9jN_3o',coach:'Squat University · Aaron Horschig'},
-'글루트 브리지':{url:'https://bretcontreras.com/the-3-most-basic-lower-body-movement-patterns-box-squat-hip-hinge-rdl-glute-bridge/',coach:'Bret Contreras'},
-'데드버그':{url:'https://www.youtube.com/watch?v=BZYaCzbP09M',coach:'E3 Rehab'},
-'사이드 플랭크':{url:'https://www.youtube.com/watch?v=eRygfYEe1hs',coach:'E3 Rehab'},
-'로잉머신':{url:'https://www.concept2.com/training/rowing-technique',coach:'Concept2 공식 테크닉'}
+'인클라인 푸시업':{url:'https://www.youtube.com/watch?v=ys9lVo25Sbs',coach:'Team 1st · 인클라인 푸시업'},
+'푸시업/인클라인 푸시업':{url:'https://www.youtube.com/watch?v=aoH7qNedO8k',coach:'피지컬갤러리 · 푸시업 자세'},
+'원암 덤벨/밴드 로우':{url:'https://www.youtube.com/watch?v=0WzjuCvnQLg&t=602s',coach:'설기관 · 원암 덤벨 로우'},
+'로우':{url:'https://www.youtube.com/watch?v=0WzjuCvnQLg&t=602s',coach:'설기관 · 덤벨 로우'},
+'숄더 프레스':{url:'https://www.youtube.com/watch?v=WUmPp8cci_o',coach:'핏블리 · 이준호 선수'},
+'레터럴 레이즈':{url:'https://www.youtube.com/watch?v=WUmPp8cci_o',coach:'핏블리 · 이준호 선수'},
+'리어델트 플라이':{url:'https://www.youtube.com/watch?v=WUmPp8cci_o',coach:'핏블리 · 이준호 선수'},
+'컬':{url:'https://www.youtube.com/watch?v=0WzjuCvnQLg&t=1064s',coach:'설기관 · 덤벨 컬'},
+'삼두 익스텐션':{url:'https://www.youtube.com/watch?v=0WzjuCvnQLg&t=1381s',coach:'설기관 · 오버헤드 익스텐션'},
+'삼두 운동':{url:'https://www.youtube.com/watch?v=0WzjuCvnQLg&t=1381s',coach:'설기관 · 오버헤드 익스텐션'},
+'고블릿/의자 스쿼트':{url:'https://youtu.be/1RcAgzHHm20',coach:'한국어 · 고블릿 스쿼트 자세'},
+'루마니안 데드리프트/힙힌지':{url:'https://www.youtube.com/watch?v=uHAroYEw2cg',coach:'어썸블리스 · 루마니안 데드리프트'},
+'스플릿 스쿼트':{url:'https://www.youtube.com/watch?v=uHAroYEw2cg',coach:'어썸블리스 · 불가리안 스플릿 스쿼트'},
+'글루트 브리지':{url:'https://www.youtube.com/results?search_query=%EB%B8%8C%EB%A6%BF%EC%A7%80+%EC%9D%B4%EB%A0%87%EA%B2%8C+%ED%95%B4%EC%95%BC+%EC%97%89%EB%8D%A9%EC%9D%B4+%EA%B7%BC%EC%9C%A1%EC%9D%B4+%EB%8B%AC%EB%9D%BC%EC%A7%91%EB%8B%88%EB%8B%A4+%EC%86%A1%EC%98%81%EB%AF%BC',coach:'굿라이프 · 송영민'},
+'데드버그':{url:'https://www.youtube.com/shorts/18xbR5AW2qY',coach:'자생한방병원 · 데드버그'},
+'사이드 플랭크':{url:'https://www.youtube.com/watch?v=GZMVRFsSHzk',coach:'한국어 · 사이드 플랭크 자세'},
+'로잉머신':{url:'https://www.youtube.com/results?search_query=%EB%A1%9C%EC%9E%89%EB%A8%B8%EC%8B%A0+%ED%83%80%EB%8A%94+%EB%B2%95+%EC%9D%B4+%EC%98%81%EC%83%81+%ED%95%98%EB%82%98%EB%A9%B4+%EB%81%9D+%EC%A1%B0%EC%A0%95%EA%B5%AD%EB%8C%80',coach:'남빅토리 · 조정 국가대표'}
 };
 function videoButton(name){const v=VIDEOS[name];return v?'<a class="videolink" href="'+v.url+'" target="_blank" rel="noopener noreferrer">▶ 자세 영상 <span class="coach">'+v.coach+'</span></a>':''}
 const $=s=>document.querySelector(s),qsa=s=>[...document.querySelectorAll(s)],pad=n=>String(n).padStart(2,'0'),dk=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()),ym=d=>d.getFullYear()+'-'+pad(d.getMonth()+1);
@@ -81,5 +81,5 @@ async function restoreBackupFile(ev){
   }catch(e){alert('백업 파일을 불러오지 못했습니다.\n'+e.message);$('#backupStatus').textContent='복원 실패: 올바른 운동 앱 백업 파일인지 확인해 주세요.'}
 }
 function render(){header();today();weekui();program();records();paintTimer()}
-qsa('.nav button').forEach(b=>b.onclick=()=>{qsa('.nav button').forEach(x=>x.classList.remove('on'));qsa('.panel').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('#'+b.dataset.tab).classList.add('on')});$('#timer').onclick=toggle;$('#finish').onclick=finish;$('#reset').onclick=resetday;$('#savebody').onclick=savebody;$('#backupSave').onclick=saveBackupFile;$('#backupLoad').onclick=openRestore;$('#backupFile').onchange=restoreBackupFile;rest(phase().rest);render();setInterval(checkDateChange,30000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkDateChange()});window.addEventListener('focus',checkDateChange);if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=trainer-v10'));
+qsa('.nav button').forEach(b=>b.onclick=()=>{qsa('.nav button').forEach(x=>x.classList.remove('on'));qsa('.panel').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('#'+b.dataset.tab).classList.add('on')});$('#timer').onclick=toggle;$('#finish').onclick=finish;$('#reset').onclick=resetday;$('#savebody').onclick=savebody;$('#backupSave').onclick=saveBackupFile;$('#backupLoad').onclick=openRestore;$('#backupFile').onchange=restoreBackupFile;rest(phase().rest);render();setInterval(checkDateChange,30000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkDateChange()});window.addEventListener('focus',checkDateChange);if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=trainer-v11'));
 </script></body></html>
